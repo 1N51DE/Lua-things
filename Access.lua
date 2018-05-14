@@ -34,3 +34,4 @@ while true do
         print "Нажмите на экран ПКМ"
     end
 end
+--https://pastebin.com/9Ca2Sh2A on pasebin
