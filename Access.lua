@@ -1,9 +1,11 @@
 local event = require("event")
-local com = require("component")
+local component = require("component")
 local sides = require("sides")
 local term = require("term")
-local rs = com.redstone
-com.gpu.setResolution(25, 20)
+local GUI = require("GUI")
+local doubleBuffering = require("doubleBuffering")
+local rs = component.redstone
+component.gpu.setResolution(25, 20)
 local allowedusers ={
     RedMaster12341 = true,
     NEbeytePLZ = true,
@@ -17,6 +19,14 @@ print "Нажмите на экран ПКМ"
 while true do
     local _,_,_,_,_,currentuser = event.pull("touch")
     if allowedusers[currentuser] then
+            if currentuser == "RedMaster12341" then
+                local adminPanel = GUI.contextMenu(2, 2)
+                adminPanel:addItem("Добавить игрока в бд").onTouch = function()
+                    local addUserToDB:addChild(GUI.input(2, 2, 30, 3, 0xEEEEEE, 0x555555, 0x999999, 0xFFFFFF, 0x2D2D2D, "Hello world", "Placeholder text")).onInputFinished = function()
+                        
+                    end
+                end
+            end
         print("Проходи," ..currentuser)
         for o = 0, 5 do 
             rs.setOutput(o, 15)
